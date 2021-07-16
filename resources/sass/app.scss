@@ -1,0 +1,23 @@
+@import "variables";
+
+.favouriteButton {
+    color: lightgray;
+    &:hover {
+        color: gray;
+    }
+    &.favourited {
+        color: $orange;
+        &:hover {
+            color: $orange;
+        }
+    }
+}
+
+.nav-link {
+    color: #000;
+    &.active {
+        color: $blue;
+        font-weight: 700;
+        border-bottom: 2px solid $blue;
+    }
+}

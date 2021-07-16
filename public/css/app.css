@@ -1,0 +1,26 @@
+.favouriteButton {
+  color: lightgray;
+}
+
+.favouriteButton:hover {
+  color: gray;
+}
+
+.favouriteButton.favourited {
+  color: #f6993f;
+}
+
+.favouriteButton.favourited:hover {
+  color: #f6993f;
+}
+
+.nav-link {
+  color: #000;
+}
+
+.nav-link.active {
+  color: #3490dc;
+  font-weight: 700;
+  border-bottom: 2px solid #3490dc;
+}
+

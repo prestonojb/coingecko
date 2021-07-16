@@ -1,0 +1,8 @@
+1. Using the API endpoints found in https://www.coingecko.com/en/api, build a cryptocurrency market dashboard page.
+2. The page should be able to list at least 20 coins.
+3. The page should show price, volume, name, symbol of the coin.
+4. The page should show the graph of 7 days data, using the sparkline returned from api. For example sparkline data can be obtained using https://api.coingecko.com/api/v3/coins/bitcoin?sparkline=true or https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&sparkline=true
+5. The page should allow user to "favorite" coins.
+6. Build another page "favorite", to only show the favorite coins.
+7. (bonus) The page should allow user to switch currency. The price and volume should display the number in the currency selected. Use this endpoint to achieve the goal https://api.coingecko.com/api/v3/exchange_rates        
+8. (bonus) Host this on a website, or a mobile app.
