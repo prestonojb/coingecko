@@ -71,8 +71,8 @@ $(function(){
                             "<td><button class='btn p-0 favouriteButton " + favourited + "' data-id='" + value.id + "'><span class='iconify' data-icon='ant-design:star-filled' data-inline='false'></span></button></td>" +
                             "<td>" + value.name + "</td>" +
                             "<td>" + value.symbol + "</td>" +
-                            "<td class='currentPrice'>" + value.current_price + "</td>" +
-                            "<td>" + value.total_volume + "</td>" +
+                            "<td class='currentPrice' data-price-in-usd='" + value.current_price + "'><span class='currencySymbol'>$</span><span class='value'>" + value.current_price + "</span></td>" +
+                            "<td class='currentVolume' data-volume-in-usd='" + value.total_volume + "'>" + "<span class='currencySymbol'>$</span><span class='value'>" + value.total_volume + "</span></td>" +
                             "<td id='" + sparklineContainerId + "'" + ">Loading...</td>" +
                           "</tr>";
                 $pricesTable.append( $tr );
@@ -106,10 +106,8 @@ $(function(){
                     if(status == 'OK') {
                         $(this).toggleClass('favourited');
                     }
-                    console.log('hi');
                 },
                 error: function() {
-                    console.log('bye');
                 },
             });
         });
@@ -118,36 +116,6 @@ $(function(){
             window.location.href = "/login";
         });
     @endauth
-
-    var $currencySelect = $('#currencySelect');
-
-    $.ajax({
-        method: "get",
-        url: "https://api.coingecko.com/api/v3/exchange_rates",
-        success: function(data){
-            var exchange_rates = data.rates;
-            $.each(exchange_rates, function(key, value) {
-                var $option = "<option data-value='" + value.value + "'>" + value.name + " (" + value.unit + ")" + "</option>";
-
-                var type = value.type;
-                $currencySelect.find('optgroup[label=' + type +']').append( $option );
-            });
-
-        },
-    });
-
-    $('.currencySelect').change(function(){
-        var currentBtcExchangeRate = $('tr[data-id=bitcoin]').find('.currentPrice').val();
-
-        // For example: BTC/ETH
-        var amountPerUnitBtc = $(this).find(":selected").data('value');
-        // For example: ETH/BTC
-        var priceInBtc = 1/amountPerUnitBtc;
-        // Switch prices currency
-        $.each($('.currentPrice'), function(key, $currentPrice) {
-            $currentPrice.val(priceInSelectedCurrency);
-        });
-    });
 });
 </script>
 @endsection

@@ -17,6 +17,14 @@
         </li>
     </ul>
 
+    <div class="form-group">
+        <label for="">Currency</label>
+        <select class="custom-select" id="currencySelect">
+            <optgroup label="fiat"></optgroup>
+            <optgroup label="crypto"></optgroup>
+        </select>
+    </div>
+
     <div class="table-responsive">
         <table class="table" id="pricesTable">
             <tr>
@@ -54,14 +62,14 @@ $(function(){
 
                 if(coinIsFavourited) {
                     var favourited = 'favourited';
-                    var $tr = "<tr>" +
-                                "<td><button class='btn p-0 favouriteButton " + favourited + "' data-id='" + value.id + "'><span class='iconify' data-icon='ant-design:star-filled' data-inline='false'></span></button></td>" +
-                                "<td>" + value.name + "</td>" +
-                                "<td>" + value.symbol + "</td>" +
-                                "<td>" + value.current_price + "</td>" +
-                                "<td>" + value.total_volume + "</td>" +
-                                "<td id='" + sparklineContainerId + "'" + ">Loading...</td>" +
-                              "</tr>";
+                    var $tr = "<tr data-id='" + value.id + "'>" +
+                            "<td><button class='btn p-0 favouriteButton " + favourited + "' data-id='" + value.id + "'><span class='iconify' data-icon='ant-design:star-filled' data-inline='false'></span></button></td>" +
+                            "<td>" + value.name + "</td>" +
+                            "<td>" + value.symbol + "</td>" +
+                            "<td class='currentPrice' data-price-in-usd='" + value.current_price + "'><span class='currencySymbol'>$</span><span class='value'>" + value.current_price + "</span></td>" +
+                            "<td class='currentVolume' data-volume-in-usd='" + value.total_volume + "'>" + "<span class='currencySymbol'>$</span><span class='value'>" + value.total_volume + "</span></td>" +
+                            "<td id='" + sparklineContainerId + "'" + ">Loading...</td>" +
+                          "</tr>";
 
                     $pricesTable.append( $tr );
 
